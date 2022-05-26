@@ -1,0 +1,12 @@
+# gcloud
+sudo usermod -aG docker $USER
+gcloud auth configure-docker us-west1-docker.pkg.dev
+sudo gcloud auth configure-docker us-west1-docker.pkg.dev
+
+# kernel
+sudo rpm -qa | grep kernel
+
+# docker-compose upgrade
+sudo yum remove device-mapper-persistent-data lvm2 pcs -y
+sudo rm -rf /usr/bin/docker-compose /usr/local/bin/docker-compose
+sudo yum install docker-compose-plugin -y
