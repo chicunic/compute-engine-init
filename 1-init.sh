@@ -6,22 +6,17 @@ hostname=$HOSTNAME
 # change timezone to Japan
 timedatectl set-timezone Asia/Tokyo
 
-# update yum packages
-yum update -y
-yum install epel-release yum-utils -y
+# update yum/dnf packages
+dnf update -y
+dnf install epel-release yum-utils -y
 
 # install sysstat, htop, unzip, wget
-yum install sysstat htop unzip wget bash-completion nc -y
+dnf install sysstat htop unzip wget bash-completion nc -y
 systemctl enable --now sysstat
 
 # install gh
 yum-config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
-yum install gh -y
-
-# install puppet agent
-rpm -Uvh https://yum.puppet.com/puppet7-release-el-8.noarch.rpm
-yum install puppet-agent -y
-sudo ln -s /opt/puppetlabs/bin/puppet /usr/bin/puppet
+dnf install gh -y
 
 # change network policy
 echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
