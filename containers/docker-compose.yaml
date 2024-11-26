@@ -1,0 +1,7 @@
+services:
+  squid:
+    image: ubuntu/squid
+    container_name: squid
+    restart: always
+    ports:
+      - '3128:3128'
